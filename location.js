@@ -17,7 +17,8 @@ const firebaseConfig = {
 // Firebase 인스턴스 초기화
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-let num = 1;
+let num = 1; // 전역 변수로 선언하여 문서 아이디를 계속 증가시킬 수 있도록 합니다.
+
 navigator.geolocation.getCurrentPosition(async function (pos) {
   console.log(pos);
   var latitude = pos.coords.latitude;
@@ -28,10 +29,10 @@ navigator.geolocation.getCurrentPosition(async function (pos) {
     longitude,
     timestamp: new Date(),
   };
-  // await addDoc(collection(db, "location"), location, `${num++}`);
-  // await addDoc(collection(db, "location"), location);
 
-  const locationRef = doc(db, "location", `${num++}`);
+  const locationRef = doc(db, "location", `${num}`); // 문서 아이디를 동적으로 설정하고 증가시킵니다.
   await setDoc(locationRef, location);
+
   alert("현재 위치는@@@@ : " + latitude + ", " + longitude);
+  num++;
 });
