@@ -17,7 +17,7 @@ const firebaseConfig = {
 // Firebase 인스턴스 초기화
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+let num = 1;
 navigator.geolocation.getCurrentPosition(async function (pos) {
   console.log(pos);
   var latitude = pos.coords.latitude;
@@ -28,11 +28,10 @@ navigator.geolocation.getCurrentPosition(async function (pos) {
     longitude,
     timestamp: new Date(),
   };
-  let num = 1;
   // await addDoc(collection(db, "location"), location, `${num++}`);
   // await addDoc(collection(db, "location"), location);
 
   const locationRef = doc(db, "location", `${num++}`);
   await setDoc(locationRef, location);
-  alert("현재 위치는@@ : " + latitude + ", " + longitude);
+  alert("현재 위치는@@@@ : " + latitude + ", " + longitude);
 });
