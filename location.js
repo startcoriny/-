@@ -26,8 +26,10 @@ navigator.geolocation.getCurrentPosition(async function (pos) {
   let location = {
     latitude,
     longitude,
+    Date,
   };
-  await addDoc(collection(db, "location"), location);
+  let num = 1;
+  await addDoc(collection(db, "location"), location, `${num++}`);
 
   alert("현재 위치는 : " + latitude + ", " + longitude);
 });
