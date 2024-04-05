@@ -34,5 +34,5 @@ navigator.geolocation.getCurrentPosition(async function (pos) {
 
   const locationRef = doc(db, "location", `${num++}`);
   await setDoc(locationRef, location);
-  alert("현재 위치는 : " + latitude + ", " + longitude);
+  alert("현재 위치는@@ : " + latitude + ", " + longitude);
 });
