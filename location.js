@@ -26,7 +26,6 @@ navigator.geolocation.getCurrentPosition(async function (pos) {
   let location = {
     latitude,
     longitude,
-    timestamp: new Date(),
   };
   let num = 1;
   await addDoc(collection(db, "location"), location, `${num++}`);
